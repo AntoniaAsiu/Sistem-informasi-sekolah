@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Bagian extends Migration
+class bagian extends Migration
 {
     public function up()
     {
