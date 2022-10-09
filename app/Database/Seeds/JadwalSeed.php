@@ -4,7 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class SiswaSeeder extends Seeder
+class JadwalSeed extends Seeder
 {
     public function run()
     {
