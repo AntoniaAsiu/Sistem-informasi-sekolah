@@ -9,7 +9,7 @@ class Pegawai extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'=> ['type'=>'int','constraint'=>10,'null'=>true,'unsigned'=>true, 'auto_increment'=>true],
+            'id'=> ['type'=>'int','constraint'=>10,'null'=>true,'unsigned'=>true,'auto_increment'=>true],
             'nip'=> ['type'=>'varchar','constraint'=>10,'null'=>true],
             'nama_depan'=>[ 'type'=>'varchar', 'constraint'=>50, 'null'=>true],
             'nama_belakang'=>[ 'type'=>'varchar', 'constraint'=>50],
@@ -32,6 +32,7 @@ class Pegawai extends Migration
             'deleted_at'    => ['type'=>'datetime', 'null'=>true]
         ]);
         $this->forge->addPrimaryKey('nip');
+        $this->forge->addUniqueKey('id');
         $this->forge->createTable('pegawai');
     }
 
