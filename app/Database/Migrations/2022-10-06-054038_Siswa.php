@@ -38,11 +38,11 @@ class siswa extends Migration
 
         ]);
         $this->forge->addPrimaryKey('nisn');
-        $this->forge->createTable('Siswa');
+        $this->forge->createTable('siswa');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Siswa');
+        $this->forge->dropTable('siswa');
     }
 }

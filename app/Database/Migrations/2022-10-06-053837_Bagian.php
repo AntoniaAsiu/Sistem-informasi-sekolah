@@ -14,9 +14,11 @@ class bagian extends Migration
             'fungsi'=> ['type'=>'text', 'null'=>true],
             'tugas_pokok' => ['type'=>'varchar', 'null'=>true]
         ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('bagian');
     }
     public function down()
     {
-        $this->forge->dropTable('Bagian');
+        $this->forge->dropTable('bagian');
     }
 }

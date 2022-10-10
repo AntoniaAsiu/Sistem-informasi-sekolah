@@ -16,11 +16,11 @@ class tahun_ajar extends Migration
             'status_aktif'=> ['type'=>'enum("Y","T")','default'=>"T"]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('Tahun_Ajar');
+        $this->forge->createTable('tahun_ajar');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Tahun_Ajar');
+        $this->forge->dropTable('tahun_ajar');
     }
 }

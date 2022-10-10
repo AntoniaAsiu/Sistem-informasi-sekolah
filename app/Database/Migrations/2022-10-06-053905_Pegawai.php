@@ -33,11 +33,11 @@ class pegawai extends Migration
 
         ]);
         $this->forge->addPrimaryKey('nip');
-        $this->forge->createTable('Pegawai');
+        $this->forge->createTable('pegawai');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Pegawai');
+        $this->forge->dropTable('pegawai');
     }
 }
