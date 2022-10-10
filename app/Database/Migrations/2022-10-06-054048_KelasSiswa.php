@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class kelas_siswa extends Migration
+class KelasSiswa extends Migration
 {
     public function up()
     {
@@ -13,7 +13,7 @@ class kelas_siswa extends Migration
             'kelas_id'=> [ 'type'=>'int', 'constraint'=>10, 'null'=>true, 'unsigned'=>true ],
             'siswa_id'=> [ 'type'=>'int', 'constraint'=>10, 'null'=>true, 'unsigned'=>true ]
         ]);
-        $this->forge->addPrimaryKey('nisn');
+        $this->forge->addPrimaryKey('id');
         $this->forge->createTable('siswa');
     }
 

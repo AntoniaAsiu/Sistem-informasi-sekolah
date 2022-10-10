@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class rincian_penilaian extends Migration
+class RincianPenilaian extends Migration
 {
     public function up()
     {

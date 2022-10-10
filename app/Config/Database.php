@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'db_saya',
+        'database' => 'db_sis',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

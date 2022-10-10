@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class mapel extends Migration
+class Mapel extends Migration
 {
     public function up()
     {

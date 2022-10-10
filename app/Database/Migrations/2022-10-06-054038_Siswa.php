@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class siswa extends Migration
+class Siswa extends Migration
 {
     public function up()
     {

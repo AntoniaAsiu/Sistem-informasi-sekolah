@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class tahun_ajar extends Migration
+class TahunAjar extends Migration
 {
     public function up()
     {
