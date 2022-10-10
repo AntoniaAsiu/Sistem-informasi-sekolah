@@ -19,7 +19,7 @@ class Pegawai extends Migration
             'no_telp'=>[ 'type'=>'varchar', 'constraint'=>17],
             'no_wa'=>[ 'type'=>'varchar', 'constraint'=>17],
             'email' => ['type'=>'varchar', 'constraint'=>128, 'null'=>true],
-            'bagian_id'    => ['type'=>'int','constraint'=>10,'null'=>true,'unsigned'=>true],
+            'bagian_id'=> ['type'=>'int','constraint'=>10,'null'=>true,'unsigned'=>true],
             'alamat'=>[ 'type'=>'varchar', 'constraint'=>255],
             'kota'=>[ 'type'=>'varchar', 'constraint'=>30],
             'tgl_lahir'=>[ 'type'=>'date'],
