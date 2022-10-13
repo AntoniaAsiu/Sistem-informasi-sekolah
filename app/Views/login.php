@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="sandi" class="from-label">Sandi Email</label>
-                        <input type="password" name="sandi" class="from-control" id="sandi"
+                        <input type="password" name="sandi" class="from-control" id="sandi">
                     </div>
                     <button type="submit" class="btn btn-primary mb-3">Login</button>
                     </div>
