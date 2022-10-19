@@ -14,7 +14,7 @@ class UserController extends BaseController
         $email = $this->request->getPost('email');
         $password =$this->request->getPost('sandi');
 
-        $pengguna = (new UserModel())->where('email', $email)->first();
+        $pengguna = (new Usermodel())->where('email', $email)->first();
 
         if($pengguna == null){
             return $this->response ->setJSON(['message'=>'email tidakterdaftar'])

@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class BagianModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'bagians';
+    protected $table            = 'bagian';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = [];
 
     // Dates

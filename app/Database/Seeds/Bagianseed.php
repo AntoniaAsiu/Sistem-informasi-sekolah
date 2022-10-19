@@ -10,7 +10,7 @@ class BagianSeed extends Seeder
     public function run()
     {
         $id = (new BagianModel())->insert([
-            'nama' => 'Antonia_asiu',
+            'nama' => 'yusuf aristokrat',
             'fungsi' => 'mencari',
             'tugas_pokok' => 'mencatat data',
         ]);

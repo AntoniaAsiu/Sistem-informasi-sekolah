@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use SebastianBergmann\Type\FalseType;
 
 class TahunAjarModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tahunajars';
+    protected $table            = 'tahun_ajar';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = False;
     protected $allowedFields    = [];
 
     // Dates

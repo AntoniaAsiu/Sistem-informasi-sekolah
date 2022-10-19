@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class KehadiranSiswaModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kehadiransiswas';
+    protected $table            = 'kehadiransiswa';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = [];
 
     // Dates
