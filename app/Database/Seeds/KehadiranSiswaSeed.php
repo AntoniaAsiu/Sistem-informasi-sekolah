@@ -13,7 +13,7 @@ class KehadiranSiswaSeed extends Seeder
         $id = (new KehadiranSiswaModel())->insert([
             'kehadiran_guru_id' => '08',
             'siswa_id' => '12',
-            'status_hadir' => 'Hadir',
+            'status_Masuk' => 'masuk',
         ]);
         echo "hasil id = $id";
     }

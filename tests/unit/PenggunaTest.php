@@ -11,8 +11,8 @@ class PenggunaTest extends CIUnitTestCase{
 
     public function testLogin(){
         $this->call('post','login',[
-            'email' =>'antoniaasiu@gmail.com',
-            'password' =>'mamaia123'
+            'email' =>'abraham@gmail.com',
+            'password' =>'12345'
         ])->assertStatus(200);
     }
     public function testCreateShowUpdateDelete(){
