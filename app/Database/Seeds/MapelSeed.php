@@ -12,7 +12,6 @@ class MapelSeed extends Seeder
         $id = (new MapelModel())->insert([
             'Mapel' => 'web Programing',
             'Kelompok' => '03',
-            'Keterangan' => 'Aktif',
             'Tingkat'=> '03',
             'KKM' => '80',
         ]);
