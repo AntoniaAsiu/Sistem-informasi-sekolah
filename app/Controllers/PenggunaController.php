@@ -29,8 +29,8 @@ class PenggunaController extends BaseController
             return $this->response->setJSON(['message->'=>'email atau sandi tidak cocok'])->setStatusCode(403);
         }
 
-        $this->Session->set('pengguna', $pengguna);
-        return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama']}"])->setStatusCode(200);
+        $this->session->set('pengguna', $pengguna);
+        return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama_depan']}"])->setStatusCode(200);
     }
 
     public function viewLogin()
@@ -89,11 +89,9 @@ class PenggunaController extends BaseController
     public function all()
     {
         $pm = new PegawaiModel();
-        $pm-> select('id , nama , gender , email');
+        $pm->select('id , nama_depan, nama_belakang , gender , email');
 
-        return (new Datatable($pm))
-            ->setFieldFilter(['nama','email','gender'])
-            ->draw();
+        return (new Datatable($pm))->setFieldFilter(['nama_depan','nama_belakang','gender','email'])->draw();
     }
 
     public function show($id){
@@ -108,7 +106,8 @@ class PenggunaController extends BaseController
         $sandi = $this->request->getvar('sandi');
 
         $id = $pm-> insert([
-            'nama' => $this->request->getVar('nama'),
+            'nama_depan' => $this->request->getVar('nama_depan'),
+            'nama_belakang' => $this->request->getVar('nama_belakang'),
             'gender' => $this->request->getVar('gender'),
             'email' => $this->request->getVar('email'),
             'sandi'=>password_hash($sandi, PASSWORD_BCRYPT),

@@ -12,16 +12,16 @@ class PenggunaTest extends CIUnitTestCase{
     public function testLogin(){
         $this->call('post','login',[
             'email' =>'abraham@gmail.com',
-            'password' =>'12345'
+            'sandi' =>'12345'
         ])->assertStatus(200);
     }
     public function testCreateShowUpdateDelete(){
-        $json = $this->call('post','Pegawai',[
+        $json = $this->call('post','pengguna',[
             'nama_depan' =>'antonia',
             'nama_belakang' =>'asiu',
             'gender' =>'L',
             'email' =>'antoniaasiu@gmail.com',
-            'password' =>'mamaia123',
+            'sandi' =>'12345',
         ])->getJSON();
         $js = json_decode($json,true);
         // 
