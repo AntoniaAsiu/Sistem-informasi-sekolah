@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class RincianPenilaianModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'rincianpenilaian';
+    protected $table            = 'rincian_penilaian';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
