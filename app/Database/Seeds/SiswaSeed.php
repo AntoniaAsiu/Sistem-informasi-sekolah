@@ -23,7 +23,7 @@ class SiswaSeed extends Seeder
             'tempat_lahir'=>'pontianak',
             'alamat'=>'jln parit demang',
             'kota'=>'pontianak',
-            'skr_kelas_id'=>'2',
+            'skr_kelas_id'=>'',
             'no_telp_rumah'=>'0855776564',
             'no_hp_ibu'=>'09838627367',
             'no_hp_ayah'=>'08929839223',
