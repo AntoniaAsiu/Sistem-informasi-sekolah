@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class KelasSiswaModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'kelassiswa';
+    protected $table            = 'kelas_siswa';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
