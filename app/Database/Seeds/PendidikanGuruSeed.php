@@ -10,7 +10,7 @@ class PendidikanGuruSeed extends Seeder
     public function run()
     {
         $id = (new PendidikanGuruModel())->insert([
-            'Pegawai_id' => '12345',
+            'Pegawai_id' => '',
             'Jenjang' => 'S2',
             'Jurusan' => 'Informatika',
             'Asal_sekolah'=> 'BSI',
