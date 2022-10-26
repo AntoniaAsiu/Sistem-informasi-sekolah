@@ -10,7 +10,7 @@ class PegawaiSeed extends Seeder
     public function run()
     {
         $id = (new PegawaiModel())->insert([
-            'nip'=>'1',
+            'nip'=>'2',
             'nama_depan'=>'abraham',
             'nama_belakang'=>'ilham',
             'gelar_depan'=>'spd',
