@@ -13,8 +13,8 @@ class KelasSeed extends Seeder
         $id = (new KelasModel())->insert([
             'Tingkat' => '03',
             'Kelas' => '3A',
-            'Pegawai_id' => '12345',
-            'Tahun_ajaran_id' => '2022',
+            'Pegawai_id' => '0',
+            'Tahun_ajaran_id' => '',
         ]);
         echo "hasil id = $id";
     }

@@ -11,10 +11,10 @@ class JadwalSeed extends Seeder
     {
         $id = (new JadwalModel())->insert([
             'hari'=> '1',
-            'mapel_id'=>'1',
+            'mapel_id'=>'',
             'jam_mulai'=>'07:00:00',
             'jam_selesai'=>'12:09:00',
-            'pegawai_id'=>'1'
+            'pegawai_id'=>''
         ]);
         echo "hasil id = $id";
     }
