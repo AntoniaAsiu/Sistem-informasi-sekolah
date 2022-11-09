@@ -19,8 +19,8 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultController('PenggunaController');
+$routes->setDefaultMethod('viewLogin');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -37,19 +37,21 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'PenggunaController::index');
+$routes->delete('logout','PenggunaController::logout');
 
-$routes->group('login', function(RouteCollection $routes){
+
+$routes->group('login',function(RouteCollection $routes){
     $routes->get('lupa','PenggunaController::viewLupaPassword');
     $routes->get('/','PenggunaController::viewLogin');
     $routes->post('/','PenggunaController::login');
-    $routes->delete('/','PenggunaController::logout');
     $routes->patch('/','PenggunaController::lupaPassword');
 });
 
 // add more  route :v
-$routes->group('pengguna', function(RouteCollection $routes){
-    $routes->get('lupa','PenggunaController::index');
+$routes->group('pengguna',['filters'=>'auth'], function(RouteCollection $routes){
+    $routes->get('/', 'PenggunaController::index');
+    $routes->get('table', 'PenggunaController::tables');
     $routes->post('/','PenggunaController::store');
     $routes->patch('/','PenggunaController::update');
     $routes->delete('/','PenggunaController::delete');

@@ -11,6 +11,16 @@ use Config\Email as ConfigEmail;
 
 class PenggunaController extends BaseController
 {
+    public function index()
+    {
+        return view('login');
+    }
+
+    public function tables()
+    {
+        return view('Pengguna/table');
+    }
+
     public function login()
     {
         // mengambil email dan password pengguna
@@ -30,7 +40,8 @@ class PenggunaController extends BaseController
         }
 
         $this->session->set('pengguna', $pengguna);
-        return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama_depan']}"])->setStatusCode(200);
+        return view('pengguna/table');
+        // return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama_depan']}"])->setStatusCode(200);
     }
 
     public function viewLogin()
@@ -81,11 +92,7 @@ class PenggunaController extends BaseController
         return redirect()->to('login');
     }
 
-    public function index()
-    {
-        return view('Pengguna/table');
-    }
-
+   
     public function all()
     {
         $pm = new PegawaiModel();
