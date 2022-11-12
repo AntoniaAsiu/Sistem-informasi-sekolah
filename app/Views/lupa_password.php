@@ -4,16 +4,12 @@
         <title>lupa Password Sistem Sekolah</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet" crossorigin="anonymous">
-
         <script scr="https://code.jquery.com/jquery-3.6.1.min.js"
              crossorigin="anonymous"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             crossorigin="anonymous"></script>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             crossorigin="anonymous"></script>
-
             <script scr="https://cdn.jsdelivr.net/gh/agoenxz2186/submitajax@develop/submit_ajax.js"
             ></script>
 
