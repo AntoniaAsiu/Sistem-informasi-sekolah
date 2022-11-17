@@ -11,10 +11,17 @@ class KehadiranSiswaSeed extends Seeder
     public function run()
     {
         $id = (new KehadiranSiswaModel())->insert([
-            'kehadiran_guru_id' => '',
-            'siswa_id' => '',
+            'kehadiran_guru_id' => '1',
+            'siswa_id' => '1',
             'status_Masuk' => 'masuk',
         ]);
-        echo "hasil id = $id";
+        
+        $id = (new KehadiranSiswaModel())->insert([
+            'kehadiran_guru_id' => '1',
+            'siswa_id'          => '1',
+            'status_hadir'      => 'Y',
+        ]);
+
+        echo "hasil id= $id";
     }
 }

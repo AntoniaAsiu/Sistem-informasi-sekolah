@@ -39,4 +39,11 @@ class PenilaianModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    
+    static function view(){
+        return (new PenilaianModel())
+                ->join('mapel', 'mapel.id=mapel_id')
+                ->join('siswa', 'siswa.id=siswa_id')
+                ->select('penilaian.*, mapel.mapel,siswa.nis, siswa.nama_depan');
+    }
 }

@@ -39,4 +39,11 @@ class RincianPenilaianModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    static function view(){
+        return (new RincianpenilaianModel())
+                ->join('penilaian', 'penilaian.id=penilaian_id')
+                
+                ->select('rincian_penilaian.*, penilaian.total_nilai,
+                 penilaian.deskripsi_nilai ');
+    }
 }

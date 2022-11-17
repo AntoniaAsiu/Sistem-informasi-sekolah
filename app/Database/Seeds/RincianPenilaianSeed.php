@@ -10,10 +10,10 @@ class RincianPenilaianSeed extends Seeder
     public function run()
     {
         $id = (new RincianPenilaianModel())->insert([
-            'Nama_nilai' => 'web_80',
-            'Nilai_angka' => '8.8',
-            'nilai_deskripsi'=> 'Sangat memuaskan',
-        
+            'penilaian_id'          => '1',
+            'nama_nilai'            => 'delapan_puluh',
+            'nilai_angka'           => '78',
+            'nilai_deskripsi'       => 'teruskan',
         ]);
         echo "hasil id = $id";
     }

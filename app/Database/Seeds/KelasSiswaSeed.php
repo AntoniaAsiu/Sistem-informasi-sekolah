@@ -10,8 +10,8 @@ class KelasSiswaSeed extends Seeder
     public function run()
     {
         $id = (new KelasSiswaModel())->insert([
-            'kelas_id' => '',
-            'siswa_id' => '',
+            'kelas_id' => '1',
+            'siswa_id' => '1',
         ]);
         echo "hasil id = $id";
     }

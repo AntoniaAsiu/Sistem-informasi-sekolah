@@ -15,6 +15,13 @@ class MapelSeed extends Seeder
             'Tingkat'=> '03',
             'KKM' => '80',
         ]);
+        $id = (new MapelModel())->insert([
+            'mapel'      => 'Bahasa Indonesia',
+            'kelompok'   => 'a',
+            'keterangan' => 'Pelajaran Bahasa Indonesia',
+            'tingkat'    => '3',
+            'kkm'        => '65',
+        ]);
         echo "hasil id = $id";
     }
 }

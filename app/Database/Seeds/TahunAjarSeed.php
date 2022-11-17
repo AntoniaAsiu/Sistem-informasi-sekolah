@@ -15,6 +15,12 @@ class TahunAjarSeed extends Seeder
             'tgl_selesai'=>'2023,09,03',
             'status_aktif'=>"T"
         ]);
+        $id = (new TahunAjarModel())->insert([
+            'tahun_ajaran'          => '2022',
+            'tgl_mulai'             => '2005-05-19',
+            'tgl_selesai'           => '2006-03-15',
+            'status_aktif'          => 'T',
+        ]);
         echo"hasil insert";
     }
 }

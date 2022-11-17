@@ -16,6 +16,14 @@ class KelasSeed extends Seeder
             'Pegawai_id' => '0',
             'Tahun_ajaran_id' => '',
         ]);
-        echo "hasil id = $id";
+       
+        $id = (new KelasModel())->insert([
+            'tingkat'             => '1',
+            'kelas'               => '1',
+            'pegawai_id'          => '1',
+            'tahun_ajaran_id'     => '1',
+           
+        ]);
+        echo "hasil id= $id";
     }
 }

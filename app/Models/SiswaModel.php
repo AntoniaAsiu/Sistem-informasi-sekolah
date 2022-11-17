@@ -39,4 +39,10 @@ class SiswaModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    static function view(){
+        return (new SiswaModel())
+                ->join('kelas', 'kelas.id=kelas_id')
+                ->select('siswa.*, kelas.kelas');
+    }
 }

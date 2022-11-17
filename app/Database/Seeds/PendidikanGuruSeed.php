@@ -17,6 +17,14 @@ class PendidikanGuruSeed extends Seeder
             'Tahun_lulus' => '2012',
             'Nilai_ijasah' => '80',
         ]);
+        $id = (new PendidikanGuruModel())->insert([
+            'pegawai_id'            => '1',
+            'jenjang'               => 'SMK',
+            'jurusan'               => 'TKJ',
+            'asal_sekolah'          => 'SMK2',
+            'tahun_lulus'           => '2023',
+            'nilai_ijasah'          => '80.9',
+        ]);
         echo "hasil id = $id";
     }
 }

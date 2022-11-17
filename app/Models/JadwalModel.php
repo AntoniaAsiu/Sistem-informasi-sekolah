@@ -39,4 +39,12 @@ class JadwalModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public static function view(){
+        return (new JadwalModel())
+        ->join('kelas', 'jadwal.kelas_id=kelas.id', 'left')
+        ->join('mapel', 'jadwal.mapel_id=mapel.id', 'left')
+        ->join('pegawai', 'pegawai.id=jadwal.pegawai_id', 'left')
+        ->select('jadwal.*, kelas.kelas, mapel.mapel, pegawai.nama_depan, pegawai.nama_belakang');
+    }
 }

@@ -39,4 +39,10 @@ class PegawaiModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    static function view(){
+        return (new PegawaiModel())
+                ->join('bagian', 'bagian.id=bagian_id')
+                ->select('pegawai.*, bagian.nama');
+    }
 }
