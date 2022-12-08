@@ -16,10 +16,24 @@ class PenggunaController extends BaseController
         return view('login');
     }
 
-    public function tables()
-    {
-        return view('Pengguna/table');
-    }
+    // public function view($page = "table")
+    // {
+    //     if (! is_file(APPPATH .'Views/pegawai/' .$page .'.php')) {
+    //         // Whoops, we don't have a page for that!
+    //         throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+    //     }
+
+    //     $data['title'] = ucfirst($page); // Capitalize the first letter
+
+    //     return  view('template/header', $data)
+    //             .view('pegawai/'.$page)
+    //             .view('template/footer');
+    // }
+
+    // public function tables()
+    // {
+    //     return view('Pengguna/table');
+    // }
 
     public function login()
     {
@@ -40,7 +54,7 @@ class PenggunaController extends BaseController
         }
 
         $this->session->set('pengguna', $pengguna);
-        return view('pengguna/table');
+        return view('backend/pegawai/table');
         // return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama_depan']}"])->setStatusCode(200);
     }
 
@@ -96,7 +110,7 @@ class PenggunaController extends BaseController
     public function all()
     {
         $pm = new PegawaiModel();
-        $pm->select('id , nama_depan, nama_belakang , gender , email');
+        $pm->select('id , nip , nama_depan, nama_belakang , gender , email');
 
         return (new Datatable($pm))->setFieldFilter(['nama_depan','nama_belakang','gender','email'])->draw();
     }
@@ -131,9 +145,11 @@ class PenggunaController extends BaseController
             throw PageNotFoundException::forPageNotFound();
 
         $hasil = $pm-> update($id,[
-            'nama' => $this->request->getVar('nama'),
+            'nama_depan' => $this->request->getVar('nama_depan'),
+            'nama_belakang' => $this->request->getVar('nama_belakang'),
             'gender' => $this->request->getVar('gender'),
             'email' => $this->request->getVar('email'),
+            'sandi' => $this->request->getVar('sandi'),
         ]);
             return $this->response->setJSON(['result'=>$hasil]);
     }

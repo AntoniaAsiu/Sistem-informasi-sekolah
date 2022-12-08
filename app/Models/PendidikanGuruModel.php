@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class PendidikanGuruModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'pendidikangurus';
+    protected $table            = 'pendidikan_guru';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false ;
     protected $allowedFields    = [];
 
     // Dates
@@ -43,6 +43,6 @@ class PendidikanGuruModel extends Model
     static function view(){
         return (new PendidikanguruModel())
                 ->join('pegawai', 'pegawai.id=pegawai_id')
-                ->select('pendidikan_guru.*, pegawai.nama_depan');
+                ->select('pendidikan_guru.*, pegawai.nama_depan, pegawai.nama_belakang');
     }
 }

@@ -1,22 +1,32 @@
 <?php
 
 namespace App\Controllers;
+
 use Agoenxz21\Datatables\Datatable;
 use App\Controllers\BaseController;
+use App\Models\KelasModel;
 use App\Models\KelassiswaModel;
+use App\Models\SiswaModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+
+
 
 class KelasSiswaController extends BaseController
 {
     public function index()
     {
-        return view('kelassiswa/table');
+        return view('backend/kelassiswa/table',[
+            'kelas' => (new KelasModel())->findAll()
+            ]);  
+            return view('backend/kelassiswa/table',[
+                'siswa' => (new SiswaModel())->findAll()
+                ]);             
     }
     public function all(){
         $kls = KelassiswaModel::view();
          
         return (new Datatable($kls))
-        ->setFieldFilter([ 'kelas' ,'nis', 'nama_depan' ,  'gender'])
+        ->setFieldFilter([ 'tingkat', 'kelas' ,'nis', 'nama_depan' ,  'gender'])
         ->draw();
     }
     public function show($id){
@@ -54,5 +64,5 @@ class KelasSiswaController extends BaseController
         $id = $this->request->getVar('id');
         $hasil = $kls->delete($id);
         return $this->response->setJSON(['result' => $hasil]);
-    } 
+    }    
 }

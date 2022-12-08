@@ -7,11 +7,13 @@ use App\Models\MapelModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 use function PHPUnit\Framework\returnSelf;
+
 class MapelController extends BaseController
 {
+    
     public function index()
     {
-        return view('mapel/table'); 
+        return view('backend/mapel/table');       
     }
     public function all(){
         $mm = new MapelModel();
@@ -62,5 +64,4 @@ class MapelController extends BaseController
         $hasil = $mm->delete($id);
         return $this->response->setJSON(['result' => $hasil]);
     }    
-
 }

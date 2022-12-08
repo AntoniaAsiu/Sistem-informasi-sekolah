@@ -1,23 +1,33 @@
 <?php
 
 namespace App\Controllers;
+
 use Agoenxz21\Datatables\Datatable;
 use App\Controllers\BaseController;
+
 use App\Models\KelasModel;
 use App\Models\PegawaiModel;
+use App\Models\TahunAjarModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+
+
 
 class KelasController extends BaseController
 {
     public function index()
     {
-        return view('kelas/table');
+        return view('backend/kelas/table',[
+            'pegawai' => (new PegawaiModel())->findAll()
+            ]);          
+            return view('backend/kelas/table',[
+                'tahun_ajar' => (new TahunAjarModel())->findAll()
+                ]);          
     }
     public function all(){
         $km = KelasModel::view();
          
         return (new Datatable($km))
-        ->setFieldFilter([ 'tingkat' , 'kelas' , 'nama_depan' ,  'tahun_ajaran'])
+        ->setFieldFilter([ 'tingkat' , 'kelas' , 'nama_depan' ,  'tahun_ajar'])
         ->draw();
     }
     public function show($id){
@@ -33,7 +43,7 @@ class KelasController extends BaseController
             'tingkat'       => $this->request->getVar('tingkat'),
             'kelas'    => $this->request->getVar('kelas'),
             'pegawai_id'         => $this->request->getVar('pegawai_id'),
-            'tahun_ajaran_id'  => $this->request->getVar('tahun_ajaran_id'),
+            'tahun_ajar_id'  => $this->request->getVar('tahun_ajar_id'),
         ]);
         return $this->response->setJSON(['id' => $id])
         ->setStatusCode(intval($id)> 0 ? 200 : 406);  
@@ -49,7 +59,7 @@ class KelasController extends BaseController
             'tingkat'       => $this->request->getVar('tingkat'),
             'kelas'    => $this->request->getVar('kelas'),
             'pegawai_id'         => $this->request->getVar('pegawai_id'),
-            'tahun_ajaran_id'  => $this->request->getVar('tahun_ajaran_id'),
+            'tahun_ajar_id'  => $this->request->getVar('tahun_ajar_id'),
         ]);
         return $this->response->setJSON(['result'=>$hasil]);
     }
@@ -58,6 +68,5 @@ class KelasController extends BaseController
         $id = $this->request->getVar('id');
         $hasil = $km->delete($id);
         return $this->response->setJSON(['result' => $hasil]);
-    } 
-    
+    }    
 }

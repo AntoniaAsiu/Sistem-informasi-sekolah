@@ -13,7 +13,9 @@ class BagianController extends BaseController
 {
     public function index()
     {
-        return view('bagian/table'); 
+        return view('backend/bagian/table',[
+            'data_kategori' => (new BagianModel())->findAll()
+        ]); 
     }
     public function all(){
         $mm = new BagianModel();

@@ -2,17 +2,27 @@
 
 namespace App\Controllers;
 use Agoenxz21\Datatables\Datatable;
-use App\Controllers\BaseController;;
+use App\Controllers\BaseController;
+use App\Models\MapelModel;
+
+;
 use App\Models\PenilaianModel;
+use App\Models\SiswaModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 use function PHPUnit\Framework\returnSelf;
-class PenilaianController extends BaseController
 
+class PenilaianController extends BaseController
 {
+    
     public function index()
     {
-        return view('penilaian/table');
+        return view('backend/penilaian/table',[
+            'mapel' => (new MapelModel())->findAll()
+            ]);  
+            return view('backend/penilaian/table',[
+                'siswa' => (new SiswaModel())->findAll()
+                ]);                 
     }
     public function all(){
         
@@ -62,5 +72,5 @@ class PenilaianController extends BaseController
         $id = $this->request->getVar('id');
         $hasil = $pm->delete($id);
         return $this->response->setJSON(['result' => $hasil]);
-    }  
+    }    
 }

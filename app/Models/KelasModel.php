@@ -13,7 +13,7 @@ class KelasModel extends Model
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
+    protected $protectFields    = false;
     protected $allowedFields    = [];
 
     // Dates
@@ -43,8 +43,8 @@ class KelasModel extends Model
     static function view(){
         return (new KelasModel())
                 ->join('pegawai', 'pegawai.id=pegawai_id')
-                ->join('tahun_ajaran', 'tahun_ajaran.id=tahun_ajaran_id')
-                ->select('kelas.*, pegawai.nama_depan , tahun_ajaran.tahun_ajaran');
+                ->join('tahun_ajar', 'tahun_ajar.id=tahun_ajar_id')
+                ->select('kelas.*, pegawai.nama_depan , pegawai.nama_belakang , tahun_ajar.tahun_ajar');
     }
 }
 

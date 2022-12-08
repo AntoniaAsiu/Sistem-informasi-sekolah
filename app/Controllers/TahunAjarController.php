@@ -6,19 +6,19 @@ use App\Controllers\BaseController;
 use App\Models\TahunAjarModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
-class TahunAjaranController extends BaseController
+class TahunAjarController extends BaseController
 {
     
     public function index()
     {
-        return view('tahunajaran/table');       
+        return view('backend/tahunajar/table');      
     }
     public function all(){
         $mm = new TahunAjarModel();
-        $mm->select(['id', 'tahun_ajaran', 'tgl_mulai', 'tgl_selesai', 'status_aktif']);
+        $mm->select(['id', 'tahun_ajar', 'tgl_mulai', 'tgl_selesai', 'status_aktif']);
         
         return (new Datatable ($mm))
-                ->setFieldFilter(['tahun_ajaran', 'tgl_mulai' , 'tgl_selesai', 'status_aktif'])
+                ->setFieldFilter(['tahun_ajar', 'tgl_mulai' , 'tgl_selesai', 'status_aktif'])
                 ->draw();
     }
     public function show($id){
@@ -31,7 +31,7 @@ class TahunAjaranController extends BaseController
         $mm = new TahunAjarModel();
 
         $id =  $mm -> insert([
-            'tahun_ajaran'       => $this->request->getVar('tahun_ajaran'),
+            'tahun_ajar'       => $this->request->getVar('tahun_ajar'),
             'tgl_mulai'    => $this->request->getVar('tgl_mulai'),
             'tgl_selesai'  => $this->request->getVar('tgl_selesai'),
             'status_aktif'     => $this->request->getVar('status_aktif'),
@@ -47,7 +47,7 @@ class TahunAjaranController extends BaseController
         throw PageNotFoundException::forPageNotFound();
         
         $hasil = $mm->update($id,[
-            'tahun_ajaran'       => $this->request->getVar('tahun_ajaran'),
+            'tahun_ajar'       => $this->request->getVar('tahun_ajar'),
             'tgl_mulai'    => $this->request->getVar('tgl_mulai'),
             'tgl_selesai'  => $this->request->getVar('tgl_selesai'),
             'status_aktif'     => $this->request->getVar('status_aktif'),
@@ -59,6 +59,6 @@ class TahunAjaranController extends BaseController
         $id = $this->request->getVar('id');
         $hasil = $mm->delete($id);
         return $this->response->setJSON(['result' => $hasil]);
-    }    
+    }   
 }
 
