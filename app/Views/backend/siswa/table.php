@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                
+                        <button class="float-end btn btn-sm btn-primary" id="btn-tambah">Tambah Data</button>
                 <table id='table-siswa' class="datatable table table-bordered">
                     <thead>
                         <tr>
@@ -21,7 +21,9 @@
                             <th>Status Masuk</th>
                             <th>Tahun Masuk</th>
                             <th>Nama Siswa</th>
+                            <th>Jenis Kelamin</th>
                             <th>Kelas Sekarang</th>
+                            <th>Aksi</th>
                          
                         </tr>
                     </thead>
@@ -139,11 +141,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Sandi</label>
-                                <input type="text" name="sandi" class="form-control">
+                                <input type="password" name="sandi" class="form-control">
                             </div>
                         </form>
                         </div>
@@ -207,7 +209,7 @@
             $('form#formSiswa').trigger('reset');
             $('input[name=_method]').val('');
     });
-        $('table#table-siswa').on('click', '.btn-light', function (){
+        $('table#table-siswa').on('click', '.btn-warning', function (){
             let id = $(this).data('id');
             let baseurl = "<?=base_url()?>";
             $.get(`${baseurl}/siswa/${id}`).done((e)=>{
@@ -215,7 +217,7 @@
                 $('input[name=nisn]').val(e.nisn);
                 $('input[name=nis]').val(e.nis);
                 $('input[name=status_masuk]').val(e.status_masuk);
-                $('input[name=thn_masuk]').val(e.thn_masuk);
+                $('input[name=thn_masuk]').val(e?.thn_masuk ??'');
                 $('input[name=nama_depan]').val(e.nama_depan);
                 $('input[name=nama_belakang]').val(e.nama_belakang);
                 $('input[name=nik]').val(e.nik);
@@ -233,7 +235,7 @@
                 $('input[name=nm_ibu]').val(e.nm_ibu);
                 $('input[name=nm_wali]').val(e.nm_wali);
                 $('input[name=email]').val(e.email);
-                $('input[name=sandi]').val(e.sandi);
+                $('input[name=sandi]').val(e?.sandi ?? '');
                 $('#modalForm').modal('show');
                 $('input[name=_method]').val('patch');
 
@@ -283,9 +285,24 @@
                 { data: 'nama_depan', render:(data,type,row,meta)=>{
                     return `${data} ${row['nama_belakang']}`;
                 }},
+                {data: 'gender',render:(data,type,row,meta)=>{
+                    if(data === 'P'){
+                        return 'Perempuan';
+                    }else if(data === 'L'){
+                        return 'Laki-laki';
+                    }
+                }},
                 {data: 'tingkat', render:(data,type,row,meta)=>{
                     return `${data} ${row['kelas']} `;
                 }},
+                {data: 'id',
+                    render: (data,type,meta,row)=>{
+                        var btnEdit     = `<button class='btn btn-warning' data-id='${data}'> Edit</button>`;
+                        var btnHapus    = `<button class = 'btn btn-danger 'data-id='${data}'> Hapus </button>`;
+                        return btnEdit + btnHapus;
+                    }
+
+                },
                
             ]
         });

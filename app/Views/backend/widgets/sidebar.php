@@ -2,9 +2,9 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=site_url('pelanggan')?>">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=site_url('pegawai')?>">
     <div class="sidebar-brand-icon mx-auto d-flex align-items-center justify-content-center ">
-        <i class="fa-sharp fa-solid fa-school"></i>
+        <i class="fas fa-graduation-cap"></i>
     </div>
     <!-- <div class="sidebar-brand-text mx-3">WP<sup>ECO</sup></div> -->
 </a>

@@ -60,7 +60,7 @@ class PegawaiController extends BaseController
         }
 
         $email = new Email(new ConfigEmail());
-        $email->setFrom('vbona2016@gmail.com', 'Sistem Informasi Sekolah');
+        $email->setFrom('antoniaasiu02@gmail.com', 'Sistem Informasi Sekolah');
         $email->setTo($pegawai['email']);
         $email->setSubject('Reset sandi Pengguna');
         $email->setMessage("Halo {$pegawai['nama_depan']} telah meminta reset baru. Reset baru kamu adalah <b>$sandibaru</b>");
@@ -86,9 +86,16 @@ class PegawaiController extends BaseController
 
     public function index()
     {
-        return view('backend/pegawai/table',[
-        'nama' => (new BagianModel())->findAll()
-        ]);      
+
+         // jika user belum login
+        if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/pegawai/table',[
+            'nama' => (new BagianModel())->findAll()
+            ]);
+        };      
     }
 
     
@@ -175,13 +182,18 @@ class PegawaiController extends BaseController
         $file = $this->request->getFile('berkas');
 
         if ($file->hasMoved()== false){
-            $path = WRITEPATH . 'uploads/pegawai';
+            $path = WRITEPATH . 'uploads/pegawai/';
 
-            if(file_exists($path) == false){
-                @mkdir($path);
+            if(!file_exists($path)){
+                @mkdir($path, recursive: true);
             }
-       $file->store('pegawai', $id . '.jpg');
+       $path = $file->store(
+                    folderName: $path, 
+                    fileName: "$id.jpg"
+                );
+            return $path;
         }
+        return null;
        
     }
 

@@ -13,7 +13,15 @@ class MapelController extends BaseController
     
     public function index()
     {
-        return view('backend/mapel/table');       
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/mapel/table',[
+                'data_kategori' => (new MapelModel())->findAll()
+            ]); 
+        };
     }
     public function all(){
         $mm = new MapelModel();

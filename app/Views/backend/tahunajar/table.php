@@ -43,7 +43,7 @@
           <button type="button" class="close" data-dismiss="modal" >&times;</button>
         </div>
         <div class="modal-body">
-          <form method="post" action="<?=base_url('bagian')?>" id="formtahunajar">
+          <form method="post" action="<?=base_url('tahunajar')?>" id="formtahunajar">
             <input type="hidden" name="id" />
             <input type="hidden" name="_method" />
             <div class="mb-3">
@@ -52,11 +52,18 @@
             </div>
             <div class="mb-3">
               <label for="tgl_mulai" class="form-label">Tanggal Mulai</label>
-              <input type="text" name="tgl_mulai" class="form-control">
+              <input type="date" name="tgl_mulai" class="form-control">
             </div>
             <div class="mb-3">
               <label for="tgl_selesai" class="form-label">Tanggal Selesai</label>
-              <input type="text" name="tgl_selesai" class="form-control">
+              <input type="date" name="tgl_selesai" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="status_aktif" class="form-label">Status Aktif</label>
+              <select name="status_aktif" id="status_aktif" class="form-control">
+                <option value="Y">Aktif</option>
+                <option value="T">Non-Aktif</option>
+              </select>
             </div>
           </form>
         </div>
@@ -106,16 +113,7 @@
 
     // kirim data 
     $("button#btn-kirim").on("click",function(){
-      // periksa apakah sandi dan konfirmasi sandi sama ?
-      var pass1= $("#sandi").val();
-      var pass2= $("#konfirm-sandi").val();
-      if(pass1 != pass2){
-        // jika tidak sama maka :
-        alert("password yang Anda Masukan Tidak Cocok");
-      }else{
-        // jika sama maka :
         $("form#formtahunajar").submit();
-      }
     });
 
     //sunting data table
@@ -125,7 +123,7 @@
       let baseurl ="<?=base_url()?>";
       
 
-      $.get(`${baseurl}/bagian/${id}`).done((e)=>{
+      $.get(`${baseurl}/tahunajar/${id}`).done((e)=>{
         $("input[name=id]").val(e.id);
         $("input[name=tahun_ajar]").val(e.tahun_ajar);
         $("input[name=tgl_mulai]").val(e.tgl_mulai);
@@ -167,7 +165,13 @@
         {data: 'tahun_ajar' },
         {data: 'tgl_mulai' },
         {data: 'tgl_selesai' },
-        {data: 'status_aktif' },
+        {data: 'status_aktif',render:(data,type,row,meta)=>{
+          if(data === "Y"){
+            return "Aktif"
+          }else if(data === "T"){
+            return "Non-Akif"
+          }
+        } },
         {data: 'id',render:(data,type,row,meta)=>
           {
           var btnEdit = `<button class='btn btn-edit btn-sm btn-warning' data-id='${data}'> Edit </button>`;

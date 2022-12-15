@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                
+                                <button class="float-end btn btn-sm btn-primary" id="btn-tambah">Tambah Data</button>
                 <table id='table-rincianpenilaian' class="datatable table table-bordered">
                     <thead>
                         <tr>
@@ -19,6 +19,7 @@
                             <th>Nama Nilai</th>
                             <th>Nilai Angka</th>
                             <th>Nilai Deskripsi</th>
+                            <th>Aksi</th>
                           
                         </tr>
                     </thead>
@@ -127,7 +128,7 @@ crossorigin="anonymous"></script>
             $('form#formRincianPenilaian').trigger('reset');
             $('input[name=_method]').val('');
     });
-        $('table#table-rincianpenilaian').on('click', '.btn-light', function (){
+        $('table#table-rincianpenilaian').on('click', '.btn-warning', function (){
             let id = $(this).data('id');
             let baseurl = "<?=base_url()?>";
             $.get(`${baseurl}/rincianpenilaian/${id}`).done((e)=>{
@@ -174,6 +175,14 @@ crossorigin="anonymous"></script>
                 {data: 'nama_nilai'},
                 {data: 'nilai_angka',},
                 {data: 'nilai_deskripsi',},
+                {data: 'id',
+                    render: (data,type,meta,row)=>{
+                        var btnEdit     = `<button class='btn btn-warning' data-id='${data}'> Edit</button>`;
+                        var btnHapus    = `<button class = 'btn btn-danger 'data-id='${data}'> Hapus </button>`;
+                        return btnEdit + btnHapus;
+                    }
+
+                },
               
             ]
         });

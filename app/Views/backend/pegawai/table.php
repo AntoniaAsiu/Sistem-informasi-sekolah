@@ -23,6 +23,7 @@
                             <th>Gender</th>
                             <th>Email</th>
                             <th>Bagian</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -69,11 +70,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">No Telp</label>
-                                <input type="text" name="no_telp" class="form-control">
+                                <input type="number" name="no_telp" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">No WA</label>
-                                <input type="text" name="no_wa" class="form-control">
+                                <input type="number" name="no_wa" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
@@ -113,7 +114,7 @@
                             <div class="mb-3"id = "fileberkas"></div>
                             <div class="mb-3">
                                 <label class="form-label">Sandi</label>
-                                <input type="text" name="sandi" class="form-control">
+                                <input type="password" name="sandi" class="form-control">
                             </div>
                         </form>
                         </div>
@@ -144,7 +145,9 @@
             <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
     function Fungsidropify(filename =''){
-        $('div#fileberkas').html(`<input type="file" name="berkas" data-allowed-file-extensions="png jpg bnp gif"
+        $('div#fileberkas').html(`<input type="file" 
+                                    name="berkas" 
+                                    data-allowed-file-extensions="png jpg bmp gif"
                                     data-default-file="${filename}">`);
         $('input[name=berkas]').dropify();
 
@@ -209,7 +212,7 @@
                 $('input[name=kota]').val(e.kota);
                 $('input[name=tgl_lahir]').val(e.tgl_lahir);
                 $('input[name=tempat_lahir]').val(e.tempat_lahir);
-                Fungsidropify(e.berkas);
+                Fungsidropify(e?.berkas ?? '');
                 $('input[name=sandi]').val(e.sandi);
                 $('#modalForm').modal('show');
                 $('input[name=_method]').val('patch');
@@ -261,10 +264,10 @@
                     }
                 },
                 {data: 'email',},
-                
                 { data: 'nama', render:(data,type,row,meta)=>{
                     return `${data} `;
                 }},
+                {data: 'foto',},
                 {data: 'id',
                     render: (data,type,meta,row)=>{
                         var btnEdit     = `<button class='btn btn-warning' data-id='${data}'> Edit</button>`;

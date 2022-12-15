@@ -19,6 +19,7 @@
                             <th>Jenjang</th>
                             <th>Jurusan</th>
                             <th>Asal Sekolah</th>
+                            <th>Nilai Ijasah</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -186,7 +187,8 @@
                 }},
                 {data: 'jenjang',},
                 {data: 'jurusan',},
-                {data: 'asal_sekolah',},
+                {data: 'asal_sekolah'},
+                {data: 'nilai_ijasah'},
                 {data: 'id',
                     render: (data,type,meta,row)=>{
                         var btnEdit     = `<button class='btn btn-warning' data-id='${data}'> Edit</button>`;

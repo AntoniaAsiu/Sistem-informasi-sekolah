@@ -25,7 +25,7 @@ class LoginFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $p = session('pengguna');
+        $p = session('pegawai');
         if(isset($p)){
             return redirect()->to(site_url('pengguna/table'));
         }

@@ -37,11 +37,11 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'PenggunaController::index');
-$routes->delete('logout','PenggunaController::logout');
 
+$routes->delete('logout','PenggunaController::logout',['filters'=>'auth']);
+$routes->get('/', 'PenggunaController::index',['filters'=>'auth']);
 
-$routes->group('login',function(RouteCollection $routes){
+$routes->group('login',['filters'=>'sesi'],function(RouteCollection $routes){
     $routes->get('lupa','PenggunaController::viewLupaPassword');
     $routes->get('/','PenggunaController::viewLogin');
     $routes->post('/','PenggunaController::login');
@@ -54,6 +54,7 @@ $routes->group('pegawai',['filters'=>'auth'], function(RouteCollection $routes){
     $routes->post('/','PegawaiController::store');
     $routes->patch('/','PegawaiController::update');
     $routes->delete('/','PegawaiController::delete');
+    $routes->get('(:num)/berkas.jpg','PegawaiController::berkas/$1');
     $routes->get('(:num)','PegawaiController::show/$1');
     $routes->get('all','PegawaiController::all');
 });
@@ -95,7 +96,7 @@ $routes->group('kelas',['filters'=>'auth'], function(RouteCollection $routes){
     $routes->get('all','KelasController::all');
 });
 
-$routes->group('Mapel',['filters'=>'auth'], function(RouteCollection $routes){
+$routes->group('mapel',['filters'=>'auth'], function(RouteCollection $routes){
     $routes->get('/', 'MapelController::index');
     $routes->post('/','MapelController::store');
     $routes->patch('/','MapelController::update');

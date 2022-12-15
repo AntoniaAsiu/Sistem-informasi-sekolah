@@ -13,7 +13,13 @@ class PenggunaController extends BaseController
 {
     public function index()
     {
-        return view('login');
+         // jika user belum login
+         if(session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/pegawai'); 
+        }else{
+            return view('login');
+        };
     }
 
     // public function view($page = "table")
@@ -60,7 +66,13 @@ class PenggunaController extends BaseController
 
     public function viewLogin()
     {
-        return view('login');
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/pegawai'); 
+        }else{
+            return view('login');
+        };
     }
 
     public function lupaPassword()

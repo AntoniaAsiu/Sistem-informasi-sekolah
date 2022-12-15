@@ -12,10 +12,16 @@ class BagianController extends BaseController
 
 {
     public function index()
-    {
-        return view('backend/bagian/table',[
-            'data_kategori' => (new BagianModel())->findAll()
-        ]); 
+    { 
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/bagian/table',[
+                'data_kategori' => (new BagianModel())->findAll()
+            ]);
+        }; 
     }
     public function all(){
         $mm = new BagianModel();

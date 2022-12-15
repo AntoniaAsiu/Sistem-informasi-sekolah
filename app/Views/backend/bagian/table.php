@@ -105,16 +105,7 @@
 
     // kirim data 
     $("button#btn-kirim").on("click",function(){
-      // periksa apakah sandi dan konfirmasi sandi sama ?
-      var pass1= $("#sandi").val();
-      var pass2= $("#konfirm-sandi").val();
-      if(pass1 != pass2){
-        // jika tidak sama maka :
-        alert("password yang Anda Masukan Tidak Cocok");
-      }else{
-        // jika sama maka :
         $("form#formPengguna").submit();
-      }
     });
 
     //sunting data table

@@ -191,13 +191,10 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <form method="post" action="<?=base_url('logout')?>">
-                                        <!-- <i class=" fas fa-sm fa-fw mr-2 fa-sign-out-alt ">
-                                        </i> -->
-                                            <input name="_method" value="delete" type="hidden" />
-                                            <button class=' text-gray-400 btn btn-danger' id="logout" name="logout"> Log Out </button>
-                                    </form>
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
                                 </a>
                             </div>
                         </li>

@@ -42,15 +42,15 @@
                             <input type="hidden" name="_method" />
                             <div class="mb-3">
                                 <label class="form-label">Waktu Masuk</label>
-                                <input type="text" name="waktu_masuk" class="form-control">
+                                <input type="time" name="waktu_masuk" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Waktu Keluar</label>
-                                <input type="text" name="waktu_keluar" class="form-control">
+                                <input type="time" name="waktu_keluar" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pertemuan</label>
-                                <input type="text" name="pertemuan" class="form-control">
+                                <input type="number" name="pertemuan" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pegawai</label>
@@ -63,8 +63,8 @@
                                         
                                         foreach($r as $k){
                                             echo "<option value='
-                                            {$k['id']}'>{$k['nip']} -  
-                                            {$k['nama_depan']} - 
+                                            {$k['id']}'>{$k['nip']} |  
+                                            {$k['nama_depan']} 
                                             {$k['nama_belakang']}
                                             </option>";
                                         }
@@ -79,8 +79,10 @@
 
 
                                         $r = (new JadwalModel())->findAll();
-                                        
+                                           
                                         foreach($r as $k){
+                                           
+
                                             echo "<option value='{$k['id']}'>{$k['hari']}</option>";
                                         }
                                     ?>

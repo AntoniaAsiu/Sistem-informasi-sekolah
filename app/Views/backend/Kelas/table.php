@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <button class="float-end btn btn-sm btn-primmary" id="btn-tambah">Tambah Data</button>
+                <button class="float-end btn btn-sm btn-primary" id="btn-tambah">Tambah Data</button>
                 <table id='table-kelas' class="datatable table table-bordered">
                     <thead>
                         <tr>

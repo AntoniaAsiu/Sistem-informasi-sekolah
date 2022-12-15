@@ -16,9 +16,15 @@ class RincianPenilaianController extends BaseController
     
     public function index()
     {
-        return view('backend/rincianpenilaian/table',[
-            'penilaian' => (new PenilaianModel())->findAll()
-            ]);        
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/rincianpenilaian/table',[
+                'penilaian' => (new PenilaianModel())->findAll()
+                ]);
+        };        
     }
     public function all(){
         

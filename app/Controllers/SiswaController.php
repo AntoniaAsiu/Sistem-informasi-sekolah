@@ -60,7 +60,7 @@ class SiswaController extends BaseController
         }
 
         $email = new Email(new ConfigEmail());
-        $email->setFrom('vbona2016@gmail.com', 'Sistem Informasi Sekolah');
+        $email->setFrom('antoniaasiu02@gmail.com', 'Sistem Informasi Sekolah');
         $email->setTo($siswa['email']);
         $email->setSubject('Reset sandi Pengguna');
         $email->setMessage("Halo {$siswa['nama_depan']} telah meminta reset baru. Reset baru kamu adalah <b>$sandibaru</b>");
@@ -86,9 +86,15 @@ class SiswaController extends BaseController
     
     public function index()
     {
-        return view('backend/siswa/table',[
-            'kelas' => (new KelasModel())->findAll()
-            ]);                
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/siswa/table',[
+                'kelas' => (new KelasModel())->findAll()
+                ]);   
+        };             
     }
     public function all(){
         $sm = SiswaModel::view();

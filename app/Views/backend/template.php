@@ -84,7 +84,7 @@
                 <div class="modal-body">Kalau mau keluar sistem, klik tombol logout</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form method="post" action="<?=url_to('login')?>">
+                    <form method="post" action="<?=url_to('logout')?>">
                         <input type="hidden" name="_method" value="delete" />
                         <button class="btn btn-danger">Logout</button>
                     </form>

@@ -14,15 +14,21 @@ class JadwalController extends BaseController
 {
     public function index()
     {
-        return view('backend/jadwal/table',[
-            'kelas' => (new KelasModel())->findAll()
-            ]);    
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
             return view('backend/jadwal/table',[
-                'mapel' => (new MapelModel())->findAll()
-                ]);      
+                'kelas' => (new KelasModel())->findAll()
+                ]);    
                 return view('backend/jadwal/table',[
-                    'pegawai' => (new PegawaiModel())->findAll()
-                    ]);             
+                    'mapel' => (new MapelModel())->findAll()
+                    ]);      
+                    return view('backend/jadwal/table',[
+                        'pegawai' => (new PegawaiModel())->findAll()
+                        ]); 
+        };            
     }
     public function all(){
         return(new Datatable(JadwalModel::view()))

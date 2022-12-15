@@ -11,7 +11,13 @@ class TahunAjarController extends BaseController
     
     public function index()
     {
-        return view('backend/tahunajar/table');      
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/tahunajar/table'); 
+        };     
     }
     public function all(){
         $mm = new TahunAjarModel();

@@ -27,7 +27,6 @@ class PegawaiSeeder extends Seeder
             'sandi'             => password_hash('12345', PASSWORD_BCRYPT), 
         ]);
             echo "hasil id = $id";
-
     }
 }
 

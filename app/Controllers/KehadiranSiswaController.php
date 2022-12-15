@@ -15,12 +15,18 @@ class KehadiranSiswaController extends BaseController
 {
     public function index()
     {
-        return view('backend/kehadiransiswa/table',[
-            'kehadiran_guru' => (new KehadiranguruModel())->findAll()
-            ]);    
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
             return view('backend/kehadiransiswa/table',[
-                'siswa' => (new SiswaModel())->findAll()
-                ]);         
+                'kehadiran_guru' => (new KehadiranguruModel())->findAll()
+                ]);    
+                return view('backend/kehadiransiswa/table',[
+                    'siswa' => (new SiswaModel())->findAll()
+                    ]); 
+        };        
     }
     public function all(){
         $khs = KehadiransiswaModel::view();

@@ -15,12 +15,18 @@ class KelasSiswaController extends BaseController
 {
     public function index()
     {
-        return view('backend/kelassiswa/table',[
-            'kelas' => (new KelasModel())->findAll()
-            ]);  
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
             return view('backend/kelassiswa/table',[
-                'siswa' => (new SiswaModel())->findAll()
-                ]);             
+                'kelas' => (new KelasModel())->findAll()
+                ]);  
+                return view('backend/kelassiswa/table',[
+                    'siswa' => (new SiswaModel())->findAll()
+                    ]);   
+        };          
     }
     public function all(){
         $kls = KelassiswaModel::view();

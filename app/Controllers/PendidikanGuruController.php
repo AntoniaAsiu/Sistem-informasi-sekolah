@@ -15,9 +15,15 @@ class PendidikanGuruController extends BaseController
     
     public function index()
     {
-        return view('backend/pendidikanguru/table',[
-            'pegawai' => (new PegawaiModel())->findAll()
-            ]);          
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
+            return view('backend/pendidikanguru/table',[
+                'pegawai' => (new PegawaiModel())->findAll()
+                ]);
+        };          
     }
     public function all(){
         

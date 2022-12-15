@@ -6,15 +6,17 @@
 
 
 
-            <div class="container">
+            <div class="container mt-5">
                
             <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Table Jadwal</h6>
+                            
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <button id="btn-tambah" class="btn btn-primary">Tambah data</button>
                 <table id='table-jadwal' class="datatable table table-bordered">
                     <thead>
                         <tr>
@@ -25,6 +27,7 @@
                             <th>Jam Mulai</th>
                             <th>Jam Selesai</th>
                             <th>Pegawai</th>
+                            <th>Aksi</th>
             
                         </tr>
                     </thead>
@@ -44,7 +47,15 @@
                             <input type="hidden" name="_method" />
                             <div class="mb-3">
                                 <label class="form-label">Hari</label>
-                                <input type="text" name="hari" class="form-control">
+                                <select name="hari" id="hari" class="form-control">
+                                    <option value="1">Minggu</option>
+                                    <option value="2">Senin</option>
+                                    <option value="3">Selasa</option>
+                                    <option value="4">Rabu</option>
+                                    <option value="5">Kamis</option>
+                                    <option value="6">Jumat</option>
+                                    <option value="7">Sabtu</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Kelas</label>
@@ -78,11 +89,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Jam Mulai</label>
-                                <input type="text" name="jam_mulai" class="form-control">
+                                <input type="time" name="jam_mulai" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Jam Selesai</label>
-                                <input type="text" name="jam_selesai" class="form-control">
+                                <input type="time" name="jam_selesai" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pegawai</label>
@@ -229,7 +240,13 @@
                 {data: 'nama_depan', render:(data,type,row,meta)=>{
                     return `${data}  ${row['nama_belakang']} `;
                 }},
-                
+                {data: 'id',render:(data,type,row,meta)=>
+                    {
+                    var btnEdit = `<button class='btn btn-edit btn-sm btn-warning' data-id='${data}'> Edit </button>`;
+                    var btnHapus = `<button class='btn btn-hapus btn-sm btn-danger' data-id='${data}'> Hapus </button>`;
+                    return btnEdit + btnHapus;
+                    } 
+                }, 
             ]
         });
     });

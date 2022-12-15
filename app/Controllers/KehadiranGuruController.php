@@ -17,12 +17,18 @@ class KehadiranGuruController extends BaseController
 {
     public function index()
     {
-        return view('backend/kehadiranguru/table',[
-            'pegawai' => (new PegawaiModel())->findAll()
-            ]);      
+         // jika user belum login
+         if(! session()->get('pengguna')){
+            // maka redirct ke halaman login
+            return redirect()->to('/login'); 
+        }else{
             return view('backend/kehadiranguru/table',[
-                'jadwal' => (new JadwalModel())->findAll()
+                'pegawai' => (new PegawaiModel())->findAll()
                 ]);      
+                return view('backend/kehadiranguru/table',[
+                    'jadwal' => (new JadwalModel())->findAll()
+                    ]);   
+        };   
     }
     public function all(){
         $kgm = KehadiranguruModel::view();
