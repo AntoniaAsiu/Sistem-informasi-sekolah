@@ -32,7 +32,7 @@ use CodeIgniter\Test\FeatureTestTrait;
             'pertemuan'     => '1',
             'pegawai_id'    => '1',
             'jadwal_id'     => '1',
-            'berita_acara'  => 'Mengajar Bahasa Indonesia',
+            'berita_acara'  => 'Mengajar Bahasa Inggris',
             
             'id' => isset($js['id'])
             ])->assertStatus(302);

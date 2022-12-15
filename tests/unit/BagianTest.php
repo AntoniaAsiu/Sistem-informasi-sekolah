@@ -25,9 +25,9 @@ use CodeIgniter\Test\FeatureTestTrait;
              ->assertStatus(302);
 
         $this->call('patch' , 'bagian' ,[
-            'nama'          => 'testing',
-            'fungsi'        => 'testing',
-            'tugas_pokok'   => 'testing',
+            'nama'          => 'Security',
+            'fungsi'        => 'menjaga wilayah Sekolah',
+            'tugas_pokok'   => 'Menjaga Ketertiban',
             
             'id' => isset($js['id'])
             ])->assertStatus(302);

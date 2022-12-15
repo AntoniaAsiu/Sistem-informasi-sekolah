@@ -16,7 +16,7 @@ use CodeIgniter\Test\FeatureTestTrait;
                 'tingkat'             => '1',
                 'kelas'               => 'A',
                 'pegawai_id'          => '1',
-                'tahun_ajaran_id'     => '1',
+                'tahun_ajar_id'     => '1',
         ])->getJSON();
         $js = json_decode($json, true);
         $this->assertNotTrue(isset( $js['id']) > 0);
@@ -28,7 +28,7 @@ use CodeIgniter\Test\FeatureTestTrait;
             'tingkat'             => '1',
             'kelas'               => 'A',
             'pegawai_id'          => '1',
-            'tahun_ajaran_id'     => '1',
+            'tahun_ajar_id'     => '1',
             
             'id' => isset($js['id'])
             ])->assertStatus(302);

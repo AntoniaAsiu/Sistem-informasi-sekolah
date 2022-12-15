@@ -23,7 +23,6 @@
                             <th>Gender</th>
                             <th>Email</th>
                             <th>Bagian</th>
-                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -78,7 +77,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Bagian</label>
@@ -111,7 +110,7 @@
                                 <label class="form-label">Tempat Lahir</label>
                                 <input type="text" name="tempat_lahir" class="form-control">
                             </div>
-                            <div class="mb-3"id = "fileberkas"></div>
+                            <!-- <div class="mb-3"id = "fileberkas"></div> -->
                             <div class="mb-3">
                                 <label class="form-label">Sandi</label>
                                 <input type="password" name="sandi" class="form-control">
@@ -144,14 +143,14 @@
             <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet"> 
             <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
-    function Fungsidropify(filename =''){
-        $('div#fileberkas').html(`<input type="file" 
-                                    name="berkas" 
-                                    data-allowed-file-extensions="png jpg bmp gif"
-                                    data-default-file="${filename}">`);
-        $('input[name=berkas]').dropify();
+    // function Fungsidropify(filename =''){
+    //     $('div#fileberkas').html(`<input type="file" 
+    //                                 name="berkas" 
+    //                                 data-allowed-file-extensions="png jpg bmp gif"
+    //                                 data-default-file="${filename}">`);
+    //     $('input[name=berkas]').dropify();
 
-    }
+    // }
     $(document).ready(function(){
         $('select[name=bagian_id]').select2({width:'100%',
             dropdownParent : $('form#formPegawai')
@@ -174,7 +173,8 @@
         },
 
         error:(xhr, status)=>{
-            alert('Maaf data salah');
+            $("#modalForm").modal('hide');
+            $("table#table-pegawai").DataTable().ajax.reload();
         }
 
         });
@@ -190,7 +190,7 @@
             $('#modalForm').modal('show');
             $('form#formPegawai').trigger('reset');
             $('input[name=_method]').val('');
-            Fungsidropify('');
+            // Fungsidropify('');
         });
 
         $('table#table-pegawai').on('click', '.btn-warning', function (){
@@ -212,7 +212,7 @@
                 $('input[name=kota]').val(e.kota);
                 $('input[name=tgl_lahir]').val(e.tgl_lahir);
                 $('input[name=tempat_lahir]').val(e.tempat_lahir);
-                Fungsidropify(e?.berkas ?? '');
+                // Fungsidropify(e?.berkas ?? '');
                 $('input[name=sandi]').val(e.sandi);
                 $('#modalForm').modal('show');
                 $('input[name=_method]').val('patch');
@@ -267,7 +267,6 @@
                 { data: 'nama', render:(data,type,row,meta)=>{
                     return `${data} `;
                 }},
-                {data: 'foto',},
                 {data: 'id',
                     render: (data,type,meta,row)=>{
                         var btnEdit     = `<button class='btn btn-warning' data-id='${data}'> Edit</button>`;

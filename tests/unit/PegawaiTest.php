@@ -19,7 +19,7 @@ class PegawaiTest extends CIUnitTestCase{
     
     public function testCreateShowUpdateDelete(){
         $json = $this->call('post', 'pegawai', [
-            'nip'                   => '12345',
+            'nip'                   => '123456',
             'nama_depan'            => 'antonia',
             'nama_belakang'         => 'asiu',
             'gelar_depan'           => 'I.T',

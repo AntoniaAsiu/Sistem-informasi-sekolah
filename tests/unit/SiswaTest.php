@@ -11,7 +11,7 @@ class SiswaTest extends CIUnitTestCase{
     use FeatureTestTrait;
 
     public function testLogin(){
-        $this->call('post', 'siswa/login', [
+        $this->call('post', 'login', [
             'email' => 'antonia@gmail.com',
             'sandi' => '12345'
         ])->assertStatus(404);
@@ -19,7 +19,7 @@ class SiswaTest extends CIUnitTestCase{
     
     public function testCreateShowUpdateDelete(){
         $json = $this->call('post', 'siswa', [
-            'nisn'          => '091238293',
+            'nisn'          => '0912382934',
             'nis'           => '29293',
             'status_masuk'  => 'A',
             'thn_masuk'     => '2013',
