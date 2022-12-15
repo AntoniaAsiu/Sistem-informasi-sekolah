@@ -47,19 +47,19 @@ class PenggunaController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('sandi');
 
-        $pengguna = (new PegawaiModel())->where('email',$email)->first();
+        $pegawai = (new PegawaiModel())->where('email',$email)->first();
 
-        if($pengguna == null) {
+        if($pegawai == null) {
             return $this->response->setJSON(['message->'=>'email tidak terdaftar'])->setStatusCode(403);
         }
         
         //cek password
-        $cekPassword = password_verify($password,$pengguna['sandi']);
+        $cekPassword = password_verify($password,$pegawai['sandi']);
         if($cekPassword == false){
             return $this->response->setJSON(['message->'=>'email atau sandi tidak cocok'])->setStatusCode(403);
         }
 
-        $this->session->set('pengguna', $pengguna);
+        $this->session->set('pegawai', $pegawai);
         return view('backend/pegawai/table');
         // return $this->response->setJSON(['message->'=>"Selamat Datang {$pengguna['nama_depan']}"])->setStatusCode(200);
     }
@@ -67,7 +67,7 @@ class PenggunaController extends BaseController
     public function viewLogin()
     {
          // jika user belum login
-         if(! session()->get('pengguna')){
+         if(session()->get('pegawai')){
             // maka redirct ke halaman login
             return redirect()->to('/pegawai'); 
         }else{
@@ -114,7 +114,7 @@ class PenggunaController extends BaseController
 
     public function logout()
     {
-        $this->session->destroy();
+        $this->session->destroy('pegawai');
         return redirect()->to('login');
     }
 

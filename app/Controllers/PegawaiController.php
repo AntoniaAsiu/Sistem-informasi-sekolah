@@ -80,7 +80,7 @@ class PegawaiController extends BaseController
     }
 
     public function logout(){
-        $this->session->destroy();
+        $this->session->destroy('pegawai');
         return redirect()->to('login');
     }
 
@@ -88,7 +88,7 @@ class PegawaiController extends BaseController
     {
 
          // jika user belum login
-        if(! session()->get('pengguna')){
+        if(! session()->get('pegawai')){
             // maka redirct ke halaman login
             return redirect()->to('/login'); 
         }else{

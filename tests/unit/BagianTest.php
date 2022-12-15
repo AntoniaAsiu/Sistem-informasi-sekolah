@@ -19,10 +19,10 @@ use CodeIgniter\Test\FeatureTestTrait;
             
         ])->getJSON();
         $js = json_decode($json, true);
-        $this->assertNotTrue(isset( $js['id']) > 0);
+        $this->assertTrue(isset( $js['id']) > 0);
 
         $this->call('get', "bagian/". isset($js['id']))
-             ->assertStatus(302);
+             ->assertStatus(200);
 
         $this->call('patch' , 'bagian' ,[
             'nama'          => 'Security',
@@ -30,7 +30,7 @@ use CodeIgniter\Test\FeatureTestTrait;
             'tugas_pokok'   => 'Menjaga Ketertiban',
             
             'id' => isset($js['id'])
-            ])->assertStatus(302);
+            ])->assertStatus(200);
             
         $this->call('delete' , 'bagian', [
             'id' => isset($js['id'])
@@ -39,6 +39,6 @@ use CodeIgniter\Test\FeatureTestTrait;
 
     public function testRead(){
         $this->call('get' , 'bagian/all' )
-             ->assertStatus(302);
+             ->assertStatus(200);
     }
  }
