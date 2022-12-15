@@ -40,6 +40,6 @@ use CodeIgniter\Test\FeatureTestTrait;
 
     public function testRead(){
         $this->call('get' , 'tahunajar/all' )
-             ->assertStatus(302);
+             ->assertStatus(200);
     }
  }

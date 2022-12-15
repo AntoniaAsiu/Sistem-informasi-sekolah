@@ -19,7 +19,7 @@ class PegawaiTest extends CIUnitTestCase{
     
     public function testCreateShowUpdateDelete(){
         $json = $this->call('post', 'pegawai', [
-            'nip'                   => '123456',
+            'nip'                   => '16456',
             'nama_depan'            => 'antonia',
             'nama_belakang'         => 'asiu',
             'gelar_depan'           => 'I.T',
@@ -43,7 +43,7 @@ class PegawaiTest extends CIUnitTestCase{
             ->assertStatus(302);
         
         $this->call('patch', 'pegawai', [
-            'nip'                   => '12345',
+            'nip'                   => '13345',
             'nama_depan'            => 'antonia',
             'nama_belakang'         => 'asiu',
             'gelar_depan'           => 'I.T',
@@ -69,7 +69,7 @@ class PegawaiTest extends CIUnitTestCase{
 
     public function testRead(){
         $this->call('get', 'pegawai/all')
-             ->assertStatus(302);
+             ->assertStatus(200);
     }
 
     public function testLogout(){

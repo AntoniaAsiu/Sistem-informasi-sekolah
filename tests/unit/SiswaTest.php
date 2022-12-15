@@ -14,7 +14,7 @@ class SiswaTest extends CIUnitTestCase{
         $this->call('post', 'login', [
             'email' => 'antonia@gmail.com',
             'sandi' => '12345'
-        ])->assertStatus(404);
+        ])->assertStatus(200);
     }
     
     public function testCreateShowUpdateDelete(){
@@ -83,7 +83,7 @@ class SiswaTest extends CIUnitTestCase{
 
     public function testRead(){
         $this->call('get', 'siswa/all')
-             ->assertStatus(302);
+             ->assertStatus(200);
     }
 
     public function testLogout(){
